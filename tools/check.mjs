@@ -73,7 +73,7 @@ const tap = async sel => {
   await sleep(500);
 };
 
-await send('Page.navigate', { url: `http://127.0.0.1:${PORT}/` }, s);
+await send('Page.navigate', { url: process.env.URL || `http://127.0.0.1:${PORT}/` }, s);   // URL=https://… — проверить выложенную версию
 for (const t of [300, 1200, 2200, 3300, 4300]) { await sleep(t - (shot.t || 0)); shot.t = t; await shot('intro-' + t); }
 await sleep(1500);
 await shot('01-list');
